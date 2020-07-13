@@ -9,6 +9,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.files import File
 from django.contrib import messages
+import random as rand
 
 class NewWikiForm(forms.Form):
     title = forms.CharField(label="Title", required=True)
@@ -20,9 +21,14 @@ def index(request):
     })
 
 def random(request):
-    return render(request, "encyclopedia/index.html", {
-        "entries": util.list_entries()
-    })
+    wiki_name = rand.choice(util.list_entries())
+
+
+    return render(request, "encyclopedia/wiki.html", {
+        "entry": markdown2.markdown(util.get_entry(wiki_name)),
+        "entry_name": wiki_name })
+
+
 
 
 def wiki(request, wiki_name):
@@ -102,14 +108,7 @@ def edit(request, wiki_name):
                 myfile.write(markdown)
 
             return HttpResponseRedirect(reverse("wiki", args=[wiki_name]))
-
-         
-    
-        else:
-            return render(request, "encyclopedia/new.html", {
-                "form": form
-            })
-
+  
     entry = util.get_entry(wiki_name)
     form = NewWikiForm(initial={'title': wiki_name, 'markdown': entry})
 
@@ -121,13 +120,3 @@ def edit(request, wiki_name):
     })
 
 
-# entry = util.get_entry(wiki_name)
-
-#     if entry: 
-
-#         return render(request, "encyclopedia/wiki.html", {
-#             "entry": markdown2.markdown(entry)
-#         })
-#     else:
-#         return render(request, "encyclopedia/error.html")
-   
