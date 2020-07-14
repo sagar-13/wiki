@@ -10,6 +10,6 @@
     <form action="{% url 'new' %}" method="post">
          {{ form }}
          {% csrf_token %}
-        <input type="submit">
+        <input class="btn btn-primary" type="submit">
     </form>
 {% endblock %}

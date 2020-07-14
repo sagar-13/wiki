@@ -5,10 +5,14 @@
 {% endblock %}
 
 {% block body %}
-    <div>
-  
-        <a href="{% url 'edit' entry_name %}">Edit this entry</a>
 
-    </div>
+    <a href="{% url 'edit' entry_name %}"><button type="button"
+            class="btn btn-outline-primary"
+            >Edit this entry</button></a>
+      
+
+    
+    <div class="entry">
     {{entry|safe}}
+    </div>
 {% endblock %}

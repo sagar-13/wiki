@@ -4,22 +4,31 @@
     background-color: white;
     width: 100vw;
     overflow-x: hidden;
+    font-size: 1.5rem;
     
   
+}
+h1 {
+    font-size: 3rem;
+}
+h2 {
+    font-size: 2rem;
 }
 
 code {
     white-space: pre;
 }
 
-
-
-textarea {
-    height: 80vh;
-    width: 80vw;
+.entry {
+    margin-top: 5vh;
 }
 
-label, input {
+textarea {
+    height: 70vh;
+    width: 80%;
+}
+
+label, input, .btn {
     display: block;
 }
 
@@ -31,8 +40,9 @@ label, input {
 
 .search {
     width: 90%;
-    font-size: 15px;
-    line-height: 15px;
+    font-size: 1.5rem;
+   
+  
     
 }
 

@@ -13,9 +13,9 @@
 
         <div class="row">
             <div class="sidebar col-lg-2 col-md-3 col-sm-12">
-                <h2>Wiki</h2>
+                <h2 class="display-4" >Wiki</h2>
                 <form action="{% url 'search' %}" method="get">
-                    <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
+                    <input class="search" type="text" name="q" placeholder="Search">
                 </form>
                 <div>
                     <a href="{% url 'index' %}">Home</a>
@@ -31,9 +31,9 @@
             </div>
             <div class="main col-lg-10 col-md-9 col-sm-12">
                 {% if messages %}
-                <ul class="messages">
+                <ul class="messages text-danger">
                     {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    <li {% if message.tags %} class="{{ message.tags }} display-4"{% endif %}>{{ message }}</li>
                     {% endfor %}
                 </ul>
                 {% endif %}
